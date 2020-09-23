@@ -1,0 +1,60 @@
+table{
+    margin-left: 570px;
+    width: 300px;
+    height: 50px;
+}
+
+table, th, td {
+    font-family: "Sofia";
+    /* border: 5px solid; */
+    border-radius: 25px;
+    text-align: center;
+    font-weight: bold;
+    font-style: oblique;
+    
+   
+  }
+ th, td{
+    font-family: "Sofia";
+    background-color:wheat;
+    font-weight: bold;
+    font-style: oblique;
+    width: 300px;
+    height: 50px;
+} 
+h1{
+    font-family: "Sofia";
+    color: wheat;
+    letter-spacing: 3px;
+}
+
+h2{
+    font-family: "Sofia";
+    color: wheat;
+    letter-spacing: 3px;
+}
+
+h4{
+    font-family: "Sofia";
+    color: wheat;
+    letter-spacing: 3px;
+
+
+}
+h5{
+    font-family: "Sofia";
+    color: wheat;
+    letter-spacing: 3px;
+}
+
+.easy-btn{
+    font-family: "Sofia";
+    }
+
+.hard-btn{
+    font-family: "Sofia";
+        }
+
+.extreme-btn{
+     font-family: "Sofia";
+         }

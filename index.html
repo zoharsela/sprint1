@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minesweeper</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+</head>
+
+<body onload="initGame(this)">
+    <h1>Minesweeper</h1>
+    <h2>First Choose Your Level:</h2>
+    <button class="easy-btn" onclick="choseSize(this)">Easy</button>
+    <button class="hard-btn" onclick="choseSize(this)">Hard</button>
+    <button class="extreme-btn" onclick="choseSize(this)">Extreme!</button>
+    <table>
+        <tbody class="container"></tbody>
+    </table>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
