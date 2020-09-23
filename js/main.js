@@ -1,6 +1,7 @@
 'use strict';
 
 var MINE = '💣';
+var FLAG = '🚩';
 var EMPTY = '';
 var gBoards = [];
 var gNextId = 0;
@@ -36,7 +37,9 @@ function initGame() {
 
 //get from the user the game board size
 function choseSize(BoardSize) {
-    switch (BoardSize.innerText) {
+    var elLevel = BoardSize;
+    console.log(BoardSize);
+    switch (elLevel.innerText) {
         case 'Easy':
             gLevel.SIZE = 4,
                 gLevel.MINES = 2
@@ -63,21 +66,18 @@ function buildBoard(board) {
             // console.log(board[i][j]);
         }
     }
+    var countMine = gLevel.MINES;
+    while (countMine > 0) {
+        i = randIdxMine();
+        j = randIdxMine();
+        board[i][j].isMine = true;
+        countMine--;
+    }
     var finalBoard = setMinesNegsCount(board);
     return finalBoard;
 }
 
 function createBoard() {
-    if (gCountMine > 0) {
-        gCountMine--;
-        return {
-            id: gNextId++,
-            minesAroundCount: 0,
-            isShown: false,
-            isMine: true,
-            isMarked: false
-        };
-    }
     return {
         id: gNextId++,
         minesAroundCount: 0,
@@ -85,6 +85,12 @@ function createBoard() {
         isMine: false,
         isMarked: false
     };
+}
+
+//rand idx for MINE
+function randIdxMine() {
+    var i = getRandNum(0, gBoards.length - 1);
+    return i;
 }
 
 function renderBoard(board) {
@@ -101,9 +107,8 @@ function renderBoard(board) {
     elTable.innerHTML = htmlStr;
 }
 
+// when clicked reveals the cell
 function cellClicked(elCell) {
-    // <td id="1" onclick="cellClicked(this)"></td>
-
     var elBoard = getBoardById(elCell.id);
     elBoard.isShown = true;
     if (elBoard.isShown && elBoard.isMine) {
@@ -113,34 +118,26 @@ function cellClicked(elCell) {
         elCell.innerText = elBoard.minesAroundCount;
     }
     else { elCell.innerText = ''; }
-
-   
-    console.log(elCell);
-    console.log(elBoard.isShown);
-    console.log(elBoard.isMine);
 }
 
 function getBoardById(id) {
     var idNum = Number(id);
     for (var i = 0; i < gLevel.SIZE; i++) {
-        for (var j = 0; j < gLevel.SIZE; j++){
-        var board = gBoards[i][j];
-        if (board.id === idNum){
-             return board;}
-    }}
+        for (var j = 0; j < gLevel.SIZE; j++) {
+            var board = gBoards[i][j];
+            if (board.id === idNum) {
+                return board;
+            }
+        }
+    }
     return null;
 }
-
-
-
-
 
 // Count mines around each cell and set the cell's minesAroundCount.
 function setMinesNegsCount(boardMine) {
     for (var i = 0; i < gLevel.SIZE; i++) {
         for (var j = 0; j < gLevel.SIZE; j++) {
             var currCell = boardMine[i][j];
-
 
             if (i === 0 && j === 0) {//corner
                 if (boardMine[i][j + 1].isMine) {
@@ -289,9 +286,11 @@ function setMinesNegsCount(boardMine) {
 
 
 
-//Called on right click to mark a cell (suspected to be a mine) Search the web (and implement)
-// how to hide the context menu on right click
-function cellMarked(elCell) {
+//Called on right click to mark a cell with flag
+function cellMarked(elCell) {//flag
+    event = new MouseEvent(typeArg, mouseEventInit);
+    elCell.innerText = FLAG;
+
 
 }
 
@@ -306,6 +305,13 @@ function checkGameOver() {
 //   that only opens the non-mine 1st degree neighbors
 function expandShown(board, elCell, i, j) {
 
+}
+
+//maximum & minimum inclusive 
+function getRandNum(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min);
 }
 
 //Render the board as a <table> to the page
