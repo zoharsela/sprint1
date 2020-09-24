@@ -417,26 +417,3 @@ function startTime() {
 function stopTimer() {
     clearInterval(gTime);
 }
-
-// var elTitle = document.querySelector('.title');
-    // elTitle.innerText = 'Your score is:';
-//Render the board as a <table> to the page
-// function renderBoard(board) {
-//     var htmlStr = '';
-//     for (var i = 0; i < gLevel.SIZE; i++) {
-//         htmlStr += '<tr>';
-//         for (var j = 0; j < gLevel.SIZE; j++) {
-//             var cell = board[i][j];
-//             if (cell.isShown && cell.isMine) {
-//                 htmlStr += '<td  id="' + cell.id + '" onclick="cellClicked(this)">' + MINE + '</td>';
-//             }
-//             else if (cell.isShown) {
-//                 htmlStr += '<td  id="' + cell.id + '" onclick="cellClicked(this)">' + cell.minesAroundCount + '</td>';
-//             }
-//             else { htmlStr += '<td  id="' + cell.id + '" onclick="cellClicked(this)"></td>'; }
-//         }
-//         htmlStr += '</tr>';
-//     }
-//     var elTable = document.querySelector('.container');
-//     elTable.innerHTML = htmlStr;
-// }
