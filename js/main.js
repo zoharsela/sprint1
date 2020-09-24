@@ -3,10 +3,16 @@
 var MINE = '💣';
 var FLAG = '🚩';
 var EMPTY = '';
+var HEART = '💖';
 var gBoards = [];
 var gNextId = 0;
 var gCountMine = 0;
 var gIsShown = false;
+var gTime;
+var gIsGameOn = true;
+var gElCountMine = 0;
+var gHeart = 3;
+
 
 //The model
 var gBoard = {};
@@ -25,20 +31,50 @@ var gGame = {
     secsPassed: 0//How many seconds passed
 }
 
+function toggleGame() {//start or restart the game
+    stopTimer();
 
+    var elBtn = document.querySelector('.play-btn');
+    elBtn.innerText = '😃';
+    initGame();
+}
 
 
 //This is called when page loads
 function initGame() {
+    stopTimer();
+
     gCountMine = gLevel.MINES;
+    gElCountMine = document.querySelector('.gCurrNumber');
+    gElCountMine.innerText = gCountMine;
     gBoards = buildBoard(gBoards);
+    gHeart = 3;
+    var elHeart = document.querySelector('.lifes');
+    elHeart.innerText = '💖💖💖';
     renderBoard(gBoards);
+    startTime();
 }
+
+//Game ends when all mines are marked, and all the other cells are shown
+function gameOver() {
+    stopTimer();
+    var elBtn = document.querySelector('.play-btn');
+    elBtn.innerText = '😵';
+    console.log('game over');
+    gHeart = 3;
+
+}
+
+// function victory() {//need flag before
+//     stopTimer();
+//     console.log('win');
+// var elBtn = document.querySelector('.play-btn');
+// elBtn.innerText = '🤩';
+// // }
 
 //get from the user the game board size
 function choseSize(BoardSize) {
     var elLevel = BoardSize;
-    console.log(BoardSize);
     switch (elLevel.innerText) {
         case 'Easy':
             gLevel.SIZE = 4,
@@ -63,7 +99,6 @@ function buildBoard(board) {
         for (var j = 0; j < gLevel.SIZE; j++) {
             var currBoard = createBoard();
             board[i][j] = currBoard;
-            // console.log(board[i][j]);
         }
     }
     var countMine = gLevel.MINES;
@@ -99,7 +134,7 @@ function renderBoard(board) {
         htmlStr += '<tr>';
         for (var j = 0; j < gLevel.SIZE; j++) {
             var cell = board[i][j];
-            htmlStr += '<td  id="' + cell.id + '" onclick="cellClicked(this)"></td>';
+            htmlStr += '<td  id="' + cell.id + '" onclick="cellClicked(this, event)"></td>';
         }
     }
     htmlStr += '</tr>';
@@ -107,17 +142,72 @@ function renderBoard(board) {
     elTable.innerHTML = htmlStr;
 }
 
+// function whichButton(event, id){
+// onmousedown="whichButton(event)" 
+//     if(event.button === 2){
+//         var elRightClick = getBoardById(elCell.id);
+//         elRightClick.innerHTML = FLAG;
+// gCountMine--
+// gElCountMine.innerText = gCountMine;
+//     } 
+//     return;
+// }
+
 // when clicked reveals the cell
-function cellClicked(elCell) {
+function cellClicked(elCell, ev) {
+    
     var elBoard = getBoardById(elCell.id);
     elBoard.isShown = true;
-    if (elBoard.isShown && elBoard.isMine) {
+    if (ev.button === 2) {
+        elCell.innerText = FLAG;
+    }
+    else if (elBoard.isShown && elBoard.isMine && gHeart > 0) {
         elCell.innerText = MINE;
+        gHeart--;
+        gCountMine--;
+        gElCountMine.innerText = gCountMine;
+        if (gHeart === 2) {
+            var elHeart = document.querySelector('.lifes');
+            elHeart.innerText = '💖💖';
+        }
+        else if (gHeart === 1) {
+            var elHeart = document.querySelector('.lifes');
+            elHeart.innerText = '💖';
+        }
+        else {
+            var elHeart = document.querySelector('.lifes');
+            elHeart.innerText = '😭';
+            for (var i = 0; i < gLevel.SIZE; i++) {
+                for (var j = 0; j < gLevel.SIZE; j++) {
+                    if (gBoards[i][j].isMine) {
+                        var elMine = document.getElementById(gBoards[i][j].id);
+                        elMine.innerText = MINE;
+                    }
+                }
+            }
+
+
+            gameOver();
+        }
+
+    }
+    else if (elBoard.isShown && elBoard.isMine) {
+        for (var i = 0; i < gLevel.SIZE; i++) {
+            for (var j = 0; j < gLevel.SIZE; j++) {
+                if (gBoards[i][j].isMine) {
+                    var elMine = document.getElementById(gBoards[i][j].id);
+                    elMine.innerText = MINE;
+                }
+            }
+
+        }
+        gameOver();
     }
     else if (elBoard.isShown) {
         elCell.innerText = elBoard.minesAroundCount;
     }
     else { elCell.innerText = ''; }
+
 }
 
 function getBoardById(id) {
@@ -287,18 +377,18 @@ function setMinesNegsCount(boardMine) {
 
 
 //Called on right click to mark a cell with flag
-function cellMarked(elCell) {//flag
-    event = new MouseEvent(typeArg, mouseEventInit);
-    elCell.innerText = FLAG;
+// function cellMarked(eventKeyboard) {//flag
+//     switch(eventKeyboard.code){
+//         case 'ArrowUp':
+
+//     }
 
 
-}
+
+// }
 
 
-//Game ends when all mines are marked, and all the other cells are shown
-function checkGameOver() {
 
-}
 
 //When user clicks a cell with no mines around, we need to open not only that cell,
 //  but also its neighbors. NOTE: start with a basic implementation
@@ -314,6 +404,22 @@ function getRandNum(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
 
+function startTime() {
+    // gGameToggle = true;
+    var startTime = new Date();
+    gTime = setInterval(function () {
+        var currTime = new Date();
+        var seconds = (currTime - startTime) / 1000;
+        var elTimer = document.querySelector('.timer');
+        elTimer.innerText = seconds;
+    }, 100)
+}
+function stopTimer() {
+    clearInterval(gTime);
+}
+
+// var elTitle = document.querySelector('.title');
+    // elTitle.innerText = 'Your score is:';
 //Render the board as a <table> to the page
 // function renderBoard(board) {
 //     var htmlStr = '';

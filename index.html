@@ -9,15 +9,37 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
 </head>
 
-<body onload="initGame(this)">
-    <h1>Minesweeper</h1>
-    <h2>First Choose Your Level:</h2>
-    <button class="easy-btn" onclick="choseSize(this)">Easy</button>
-    <button class="hard-btn" onclick="choseSize(this)">Hard</button>
-    <button class="extreme-btn" onclick="choseSize(this)">Extreme!</button>
-    <table>
-        <tbody class="container"></tbody>
-    </table>
+<body>
+    <img src="img/fire.jpg" alt="Trulli" width="500" height="333">
+    <div><h1>Minesweeper</h1></div>
+        
+    <div> <h2>First Choose Your Level:</h2>
+        <button class="easy-btn" onclick="choseSize(this)">Easy</button>
+        <button class="hard-btn" onclick="choseSize(this)">Hard</button>
+        <button class="extreme-btn" onclick="choseSize(this)">Extreme!</button>
+    <h2>--Now Lets Play!</h2>
+        <button class="play-btn" onclick="toggleGame(this)">😃</button>
+    </div>  
+    <div>
+        <table>
+            <tbody class="container"></tbody>
+        </table>
+        <h4>Lifes Left:</h4>
+        <h5 class="lifes"></h5>
+        <h4>--Mine Left:</h4>
+        <h5 class="gCurrNumber"></h5>
+    </div>
+  
+       <p> <h4>Game Time:</h4>
+        <label class="timer"></label>
+  
+        
+
+        
+   
+  
+      
+       </p>
     <script src="js/main.js"></script>
 </body>
 

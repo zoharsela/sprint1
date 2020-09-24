@@ -1,49 +1,50 @@
+body{
+    background: url("img/fire.jpg");
+    background-color: grey;
+
+}
+div {
+    display: flex;
+    align-items: center;
+  }
 table{
-    margin-left: 570px;
-    width: 300px;
-    height: 50px;
+    table-layout: fixed;
+} 
+.container{
+    width: 30px;
 }
 
-table, th, td {
-    font-family: "Sofia";
-    /* border: 5px solid; */
-    border-radius: 25px;
-    text-align: center;
-    font-weight: bold;
-    font-style: oblique;
-    
-   
-  }
  th, td{
+    border-radius: 25px;
     font-family: "Sofia";
-    background-color:wheat;
+    background-color: rgb(68, 66, 66);
     font-weight: bold;
     font-style: oblique;
-    width: 300px;
-    height: 50px;
-} 
+    width: 20px;
+    height: 20px;
+}  
 h1{
     font-family: "Sofia";
-    color: wheat;
+    color: white;
     letter-spacing: 3px;
 }
 
 h2{
     font-family: "Sofia";
-    color: wheat;
+    color: white;
     letter-spacing: 3px;
 }
 
 h4{
     font-family: "Sofia";
-    color: wheat;
+    color: white;
     letter-spacing: 3px;
 
 
 }
 h5{
     font-family: "Sofia";
-    color: wheat;
+    color: white;
     letter-spacing: 3px;
 }
 
@@ -58,3 +59,13 @@ h5{
 .extreme-btn{
      font-family: "Sofia";
          }
+.timer{
+    font-family: "Sofia";
+    border: 3px solid white;
+    background-color:white;
+    width: 100px;
+}
+.play-btn{
+   
+    font-family: "Sofia";
+    }
