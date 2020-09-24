@@ -1,7 +1,9 @@
 body{
-    background: url("img/fire.jpg");
-    background-color: grey;
-
+    background: url("../img/fire.jpg");
+    background-color:white;
+    background-position: center;
+  background-repeat: no-repeat; 
+  background-size: cover;
 }
 div {
     display: flex;
@@ -9,45 +11,58 @@ div {
   }
 table{
     table-layout: fixed;
+   margin-left: 530px;
 } 
 .container{
     width: 30px;
 }
 
- th, td{
-    border-radius: 25px;
+ tr, td{
+    border: 0.5px;
     font-family: "Sofia";
     background-color: rgb(68, 66, 66);
     font-weight: bold;
     font-style: oblique;
-    width: 20px;
-    height: 20px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
 }  
 h1{
-    font-family: "Sofia";
-    color: white;
+
+    font-weight: bolder;
+    font-family: "Arial";
+    background-color: black;
+    color: rgb(214, 73, 73);
     letter-spacing: 3px;
+    margin-left: 500px;
 }
 
 h2{
-    font-family: "Sofia";
-    color: white;
+    background-color: black;
+    color: rgb(214, 73, 73);
+    font-weight: bolder;
+    font-family: "Arial";
     letter-spacing: 3px;
 }
 
 h4{
-    font-family: "Sofia";
-    color: white;
+    background-color: black;
+    color: rgb(214, 73, 73);
+    font-weight: bolder;
+    font-family: "Arial";
     letter-spacing: 3px;
 
 
 }
-h5{
-    font-family: "Sofia";
-    color: white;
-    letter-spacing: 3px;
+#extra{
+    margin-left: 450px;
 }
-
+#time{
+    margin-left: 450px;
+}
+#head{
+    margin-left: 250px;
+}
 .easy-btn{
     font-family: "Sofia";
     }
@@ -60,9 +75,10 @@ h5{
      font-family: "Sofia";
          }
 .timer{
+    background-color: black;
+    color: rgb(214, 73, 73);
     font-family: "Sofia";
-    border: 3px solid white;
-    background-color:white;
+    border: 3px solid black;
     width: 100px;
 }
 .play-btn{
