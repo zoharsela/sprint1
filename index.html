@@ -12,13 +12,14 @@
 <body>
     <div><h1>Minesweeper</h1></div>
         
-    <div id="head"> <h2>Choose Your Level:</h2>
+    <div id="head">
+        <button class="play-btn" onclick="toggleGame(this)">😃</button>
+    </div> 
+    <div id="head2">
         <button class="easy-btn" onclick="choseSize(this)">Easy</button>
         <button class="hard-btn" onclick="choseSize(this)">Hard</button>
         <button class="extreme-btn" onclick="choseSize(this)">Extreme!</button>
-    <h2>--Lets Play!</h2>
-        <button class="play-btn" onclick="toggleGame(this)">😃</button>
-    </div>  
+    </div> 
     <div>
         <table>
             <tbody class="container"></tbody>
@@ -36,13 +37,7 @@
         <h4>--Clue Left:</h4>
         <h4 class="clues" onclick="hintGame(this)">💡💡💡</h4>
     </div>
-        
-
-        
-   
-  
       
-       </p>
     <script src="js/main.js"></script>
 </body>
 
