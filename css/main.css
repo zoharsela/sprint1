@@ -219,8 +219,8 @@ p {
 
 }
 #cluePic{
-    cursor: not-allowed; 
-    /* margin-left: 1px; */
+    cursor: pointer;
+        /* margin-left: 1px; */
     border-style: inset;
     border-color: rgb(77, 78, 78);
     border-radius: 7%;
