@@ -193,13 +193,12 @@ function rightButton(ev, elCell) {
         if (elCell.innerText === FLAG) {
             elCell.innerText = '';
             gFakeFlag++;
-            console.log('gFakeFlag', gFakeFlag);
             gElCountMine.innerText = gFakeFlag;
             return;
         }
+        if(elBoard.gIsShown) return;
         elCell.innerText = FLAG;
         gFakeFlag--;
-        console.log('gFakeFlag', gFakeFlag);
         if (elBoard.isMine) {
             elBoard.isMarked = true;
             gCountMine--; 
