@@ -30,6 +30,7 @@ var gCountHint = 3;
 var timeHint;
 var gElStart;
 var gFirstClick;
+var gFakeFlag;
 
 
 
@@ -52,6 +53,7 @@ var gGame = {
 
 //This is called when page loads
 function initGame() {
+    gFakeFlag = gLevel.MINES;
     gFirstClick = true;
     stopTimer();
     gElStart = document.querySelector('.play-btn');
@@ -62,7 +64,7 @@ function initGame() {
     gCountMine = gLevel.MINES;
     gCountMineFalse = gCountMine;
     gElCountMine = document.querySelector('.gCurrNumber');
-    gElCountMine.innerText = gCountMine;
+    gElCountMine.innerText = gFakeFlag;
     gBoards = buildBoard();
     var elHeart = document.querySelector('.lifes');
     if (gHeart === 1) { elHeart.innerText = HEART + HEART; }
@@ -81,7 +83,7 @@ function gameOver() {
 }
 
 function checkVictory() {//need flag before
-    if (gCountMine === 0 || (gCountMine === 1 && gCountFlag === 2) || (gCountMine === 3 && gCountFlag === 0) || (gCountMine === 3 && gCountFlag === 0)) {
+    if ((gCountMine === 0 && gFakeFlag === 0)|| (gCountMine === 0 && gFakeFlag === 1) || (gCountMine === 1 && gCountFlag === 2) || (gCountMine === 3 && gCountFlag === 0) || (gCountMine === 3 && gCountFlag === 0)) {
         stopTimer();
         console.log('win');
         var elBtn = document.querySelector('.play-btn');
@@ -170,7 +172,7 @@ function renderBoard(board) {
         htmlStr += '<tr>';
         for (var j = 0; j < gLevel.SIZE; j++) {
             var cell = board[i][j];
-            htmlStr += '<td  id="' + cell.id + '" onclick="cellClicked(this, ' + i + ', ' + j + ')"  onmousedown="whichButton(event, this)" ></td>';
+            htmlStr += '<td  id="' + cell.id + '" onclick="cellClicked(this, ' + i + ', ' + j + ')"  onmousedown="rightButton(event, this)" ></td>';
         }
     }
     htmlStr += '</tr>';
@@ -179,24 +181,31 @@ function renderBoard(board) {
 }
 
 //right click flag
-function whichButton(ev, elCell) {
-    var elBoard = getBoardById(elCell.id);
-    if (gIsStartTimer) {
-        startTime();
-        gIsStartTimer = !gIsStartTimer;
-    }
+function rightButton(ev, elCell) {
+   
     if (gIsGameOver) return;
+    var elBoard = getBoardById(elCell.id);
+    // if (gIsStartTimer) {
+    //     startTime();
+    //     gIsStartTimer = !gIsStartTimer;
+    // }
     if (ev.button === 2) {
         if (elCell.innerText === FLAG) {
             elCell.innerText = '';
+            gFakeFlag++;
+            console.log('gFakeFlag', gFakeFlag);
+            gElCountMine.innerText = gFakeFlag;
             return;
         }
         elCell.innerText = FLAG;
+        gFakeFlag--;
+        console.log('gFakeFlag', gFakeFlag);
         if (elBoard.isMine) {
             elBoard.isMarked = true;
-            gCountMine--;
-            gElCountMine.innerText = gCountMine;
+            gCountMine--; 
+            console.log(' gCountMine',  gCountMine);
         }
+        gElCountMine.innerText = gFakeFlag;
         gCountFlag++;
         checkVictory();
     }
@@ -206,6 +215,11 @@ function whichButton(ev, elCell) {
 
 // when clicked reveals the cell
 function cellClicked(elCell, i, j) {
+    if (gIsStartTimer) {
+        startTime();
+        gIsStartTimer = !gIsStartTimer;
+    }
+    
     if (gFirstClick && gBoards[i][j].isMine) {
         gNextId = 0;
         gBoards = buildBoard();
@@ -217,14 +231,10 @@ function cellClicked(elCell, i, j) {
             else { elCell.innerText = gBoards[i][j].minesAroundCount; }
             return;
         }
-    } else { gFirstClick = false; 
-        console.log('gFirstClick', gFirstClick);}
-
-    if (gIsStartTimer) {
-        startTime();
-        gIsStartTimer = !gIsStartTimer;
+    } else {
+        gFirstClick = false;
     }
-    // if (gHintClick) {
+//   if (gHintClick) {
     //     revealNegs(gBoards, { i, j });
     //     timeHint = setInterval(coverNegs(gBoards, { i, j }), 10000);
     //     console.log(timeHint);
@@ -317,9 +327,9 @@ function renderCell(id, value) {
 }
 
 function renderEmptyCell(id) {
-    console.log('id', id);
     var elTd = document.getElementById(id);
     elTd.style.backgroundColor = 'rgb(151, 146, 146)';
+    elTd.innerText = '';
 }
 
 function renderEmptyCellHint(id) {
