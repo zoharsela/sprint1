@@ -223,7 +223,7 @@ function cellClicked(elCell, i, j) {
         gNextId = 0;
         gBoards = buildBoard();
         if (gFirstClick && !gBoards[i][j].isMine) {
-            gFirstClick = !gFirstClick;
+            gFirstClick = false;
             if (gBoards[i][j].minesAroundCount === 0) {
                 elCell.style.backgroundColor = 'rgb(151, 146, 146)';
             }
