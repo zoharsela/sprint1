@@ -46,15 +46,6 @@ var gGame = {
     secsPassed: 0//How many seconds passed
 }
 
-function toggleGame() {//start or restart the game
-    stopTimer();
-
-    var elBtn = document.querySelector('.play-btn');
-    elBtn.innerText = START;
-    initGame();
-}
-
-
 //This is called when page loads
 function initGame() {
     stopTimer();
@@ -65,7 +56,8 @@ function initGame() {
     gCountMineFalse = gCountMine;
     gElCountMine = document.querySelector('.gCurrNumber');
     gElCountMine.innerText = gCountMine;
-    gBoards = buildBoard(gBoards);
+    gBoards = buildBoard();
+    console.log(gBoards);
     var elHeart = document.querySelector('.lifes');
     if (gHeart === 2) elHeart.innerText = HEART + HEART;
     else { elHeart.innerText = HEART + HEART + HEART; }
@@ -101,39 +93,43 @@ function choseSize(BoardSize) {
             gLevel.SIZE = 4,
                 gLevel.MINES = 2
             gHeart = 2
-
+            initGame();
             break;
         case 'Hard':
             gLevel.SIZE = 8,
                 gLevel.MINES = 12
             gHeart = 3
+            initGame();
             break;
         case 'Extreme!':
             gLevel.SIZE = 12,
                 gLevel.MINES = 30
             gHeart = 3
+            initGame();
             break;
     }
 }
 
 //Builds the board Set mines at random locations Call setMinesNegsCount() Return the created board
-function buildBoard(board) {
+function buildBoard() {
+    var boards = [];
     for (var i = 0; i < gLevel.SIZE; i++) {
-        board[i] = [];
+        boards[i] = [];
         for (var j = 0; j < gLevel.SIZE; j++) {
             var currBoard = createBoard();
-            board[i][j] = currBoard;
+            boards[i][j] = currBoard;
         }
     }
     var countMine = gLevel.MINES;
     while (countMine > 0) {
         i = randIdxMine();
         j = randIdxMine();
-        board[i][j].isMine = true;
+        console.log('i, j', i, j);
+        boards[i][j].isMine = true;
         countMine--;
     }
-    setMinesNegsCount(board);
-    return board;
+    setMinesNegsCount(boards);
+    return boards;
 }
 
 function createBoard() {
@@ -148,7 +144,7 @@ function createBoard() {
 
 //rand idx for MINE
 function randIdxMine() {
-    var i = getRandNum(0, gBoards.length - 1);
+    var i = getRandNum(0, gLevel.SIZE - 1);
     return i;
 }
 
@@ -334,16 +330,19 @@ function coverNegs(board, pos) {
 
 
 //count mines arount cell
-function countMinesNegs(pos) {
+function countMinesNegs(board, pos) {
+    // console.log('board, pos', board, pos);
     var mineCounter = 0;
     for (var i = pos.i - 1; i <= pos.i + 1; i++) {
         if (i < 0 || i >= gLevel.SIZE) continue;
         for (var j = pos.j - 1; j <= pos.j + 1; j++) {
             if (j < 0 || j >= gLevel.SIZE) continue;
             if (i === pos.i && j === pos.j) continue;
-            if (gBoards[i][j].isMine) {
+            console.log('board[i][j].isMine', board[i][j].isMine);
+            if (board[i][j].isMine) {
                 mineCounter++;
             }
+            else continue;
         }
     }
     return mineCounter;
@@ -353,7 +352,7 @@ function countMinesNegs(pos) {
 function setMinesNegsCount(boardMine) {
     for (var i = 0; i < gLevel.SIZE; i++) {
         for (var j = 0; j < gLevel.SIZE; j++) {
-            var mineCount = countMinesNegs({ i, j });
+            var mineCount = countMinesNegs(boardMine, { i, j });
             boardMine[i][j].minesAroundCount = mineCount;
         }
     }
@@ -383,6 +382,7 @@ function revealCells(gBoards) {
 function getRandNum(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
+    console.log('min, max', min, max);
     return Math.floor(Math.random() * (max - min) + min);
 }
 

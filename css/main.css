@@ -1,24 +1,32 @@
 body{
-    background: url("../img/fire.jpg");
+    background-image: url("../img/fire.jpg");
     background-color:white;
-    background-position: center;
+    /* background-position: center; */
   background-repeat: no-repeat; 
-  background-size: cover;
+  /* width: 700px;
+  height: 100px; */
+  background-size: 1300px 800px;
+  /* border: 4px solid black;
+  border-radius: 4px; */
+  
+  
+  /* background-size: cover; */
 }
-div {
+div{
     display: flex;
     align-items: center;
   }
 table{
+    margin: 15px 15px 5px 600px;
     table-layout: fixed;
-   margin-left: 530px;
-} 
-.container{
-    width: 30px;
-}
+ 
 
- tr, td{
-    border: 0.5px;
+} 
+td{
+    
+    cursor: pointer;
+    border-style: inset;
+    border-color: black;
     font-family: "Sofia";
     background-color: rgb(68, 66, 66);
     font-weight: bold;
@@ -28,13 +36,15 @@ table{
     text-align: center;
 }  
 h1{
-
+    cursor: not-allowed; 
+    border-style: inset;
+    padding: 10px;
     font-weight: bolder;
     font-family: "Arial";
     background-color: black;
     color: rgb(214, 73, 73);
     letter-spacing: 3px;
-    margin-left: 500px;
+    margin-left: 560px;
 }
 
 h2{
@@ -45,46 +55,195 @@ h2{
     letter-spacing: 3px;
 }
 
-h4{
+
+.play-btn{
+    cursor: pointer;
+    border-style: inset;
+    background-color: rgb(68, 66, 66);
+    }
+.easy-btn{
+    cursor: pointer;
     background-color: black;
     color: rgb(214, 73, 73);
-    font-weight: bolder;
     font-family: "Arial";
-    letter-spacing: 3px;
-
-
-}
-#extra{
-    margin-left: 450px;
-}
-#time{
-    margin-left: 450px;
-}
-#head{
-    margin-left: 600px;
-}
-#head2{
-    margin-left: 550px;
-}
-.easy-btn{
-    font-family: "Sofia";
     }
 
 .hard-btn{
-    font-family: "Sofia";
+    cursor: pointer;
+    background-color: black;
+    color: rgb(214, 73, 73);
+    font-family: "Arial";
         }
 
 .extreme-btn{
-     font-family: "Sofia";
+    cursor: pointer;
+    background-color: black;
+    color: rgb(214, 73, 73);
+     font-family: "Arial";
          }
 .timer{
+    cursor: not-allowed; 
+    margin-left: 450px;
     background-color: black;
     color: rgb(214, 73, 73);
     font-family: "Sofia";
     border: 3px solid black;
     width: 100px;
 }
-.play-btn{
-   
-    font-family: "Sofia";
-    }
+
+p { 
+    margin: 15px 5px 15px 70px; 
+
+    width: auto;
+}
+#clock{
+    margin: 15px 5px 15px 70px;
+}
+#time{
+    margin: 5px 5px 5px 70px; 
+    cursor: not-allowed; 
+    margin-left: 550px;
+    border-style: inset;
+    border-color: rgb(77, 78, 78);
+    border-radius: 7%;
+    width: 65px;
+    height: 20px;
+    padding: 4px;
+    background-color:black;
+    color: rgb(214, 73, 73);
+    font-weight: bolder;
+    font-family: "Arial";
+    letter-spacing: 3px;
+}
+.timer{
+    margin: 0px 60px 0px 0px;
+    cursor: not-allowed; 
+    border-style: inset;
+    border-color: rgb(77, 78, 78);
+    border-radius: 7%;
+    width: 65px;
+    height: 20px;
+    padding: 4px;
+    background-color:black;
+    color: rgb(214, 73, 73);
+    font-weight: bolder;
+    font-family: "Arial";
+    letter-spacing: 3px;
+
+}
+#head{
+    margin-left: 665px;
+}
+#head2{
+    margin-left: 615px;
+}
+#life{
+    cursor: not-allowed; 
+    margin-left: 520px;
+    border-style: inset;
+    border-color: rgb(77, 78, 78);
+    border-radius: 7%;
+    width: 300px;
+    height: 45px;
+    padding: 4px;
+    background-color:black;
+    color: rgb(214, 73, 73);
+    font-weight: bolder;
+    font-family: "Arial";
+    letter-spacing: 3px;
+
+}
+#lifePic{
+    cursor: not-allowed; 
+    /* margin-left: 1px; */
+    border-style: inset;
+    border-color: rgb(77, 78, 78);
+    border-radius: 7%;
+    width: 300px;
+    height: 45px;
+    padding: 4px;
+    background-color: rgb(77, 78, 78);
+    color: rgb(214, 73, 73);
+    font-weight: bolder;
+    font-family: "Arial";
+    letter-spacing: 3px;
+
+}
+#Mine{
+    cursor: not-allowed; 
+    margin-left: 3px;
+    border-style: inset;
+    border-color: rgb(77, 78, 78);
+    border-radius: 7%;
+    width: 300px;
+    height: 45px;
+    padding: 4px;
+    background-color:black;
+    color: rgb(214, 73, 73);
+    font-weight: bolder;
+    font-family: "Arial";
+    letter-spacing: 3px;
+
+}
+#MinePic{
+    cursor: not-allowed; 
+    font-size: 17px;
+    /* margin-left: 1px; */
+    border-style: inset;
+    border-color: rgb(77, 78, 78);
+    border-radius: 7%;
+    width: 300px;
+    height: 45px;
+    padding: 4.5px;
+    background-color: rgb(77, 78, 78);
+    color: rgb(214, 73, 73);
+    font-family: "Arial";
+    font-weight: bolder;
+    letter-spacing: 3px;
+
+}
+#clue{
+    cursor: not-allowed; 
+    margin-left: 3px;
+    border-style: inset;
+    border-color: rgb(77, 78, 78);
+    border-radius: 7%;
+    width: 300px;
+    height: 45px;
+    padding: 4px;
+    background-color:black;
+    color: rgb(214, 73, 73);
+    font-weight: bolder;
+    font-family: "Arial";
+    letter-spacing: 3px;
+
+}
+#cluePic{
+    cursor: not-allowed; 
+    /* margin-left: 1px; */
+    border-style: inset;
+    border-color: rgb(77, 78, 78);
+    border-radius: 7%;
+    width: 300px;
+    height: 45px;
+    padding: 4px;
+    background-color: rgb(77, 78, 78);
+    color: rgb(214, 73, 73);
+    font-weight: bolder;
+    font-family: "Arial";
+    letter-spacing: 3px;
+
+}
+
+/* label{
+    display: inline;
+} */
+/* p{
+    margin-top: 50px;
+} */
+/* #extra{
+    margin-top: 10px; */
+    /* /* width: 300px;
+    height: 50px;
+
+} */

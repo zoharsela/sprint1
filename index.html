@@ -9,34 +9,55 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
 </head>
 
-<body>
+<body onload="initGame()">
+    <!-- <img id="img" src="img/fire.jpg" alt="danger mires" style="width:500px;height:600px;"> -->
     <div><h1>Minesweeper</h1></div>
         
     <div id="head">
-        <button class="play-btn" onclick="toggleGame(this)">😃</button>
+        <button class="play-btn" onclick="initGame()">😃</button>
     </div> 
     <div id="head2">
         <button class="easy-btn" onclick="choseSize(this)">Easy</button>
         <button class="hard-btn" onclick="choseSize(this)">Hard</button>
         <button class="extreme-btn" onclick="choseSize(this)">Extreme!</button>
     </div> 
-    <div>
+    <div id="extra" style="display: inline">
+        <p>
+        <h4 id="life" style="display: inline">Lifes:</h4>
+        <h4 id="lifePic" class="lifes" style="display: inline">💖💖💖</h4>
+        <h4 id="Mine" style="display: inline">Mine:</h4>
+        <h4 id="MinePic" class="gCurrNumber" style="display: inline">💣</h4>
+        <h4 id="clue" style="display: inline">Clue:</h4>
+        <h4 id="cluePic" class="clues" onclick="hintGame(this)" style="display: inline">💡💡💡</h4>
+    </p>
+</div>
+<div id="clock" style="display: inline">
+
+    <h4 style="display: inline" id="time">Timer:</h4>
+    <h4 class="timer" style="display: inline">00:00</h4>
+
+</div>
+
+    <div id="table" >
         <table>
             <tbody class="container"></tbody>
         </table>
     </div>
-  
+    
+   
+
+<!--   
        <div id="time"> <h4>Game Time:</h4>
-        <label class="timer"></label>
+        <label class="timer">00:00</label>
        </div>
 <div id="extra">
-        <h4>Lifes Left:</h4>
-        <h4 class="lifes"></h4>
-        <h4>--Mine Left:</h4>
-        <h4 class="gCurrNumber"></h4>
-        <h4>--Clue Left:</h4>
+        <h4>--Lifes:</h4>
+        <h4 class="lifes">💖💖💖</h4>
+        <h4>--Mine:</h4>
+        <h4 class="gCurrNumber">💣</h4>
+        <h4>--Clue:</h4>
         <h4 class="clues" onclick="hintGame(this)">💡💡💡</h4>
-    </div>
+    </div> -->
       
     <script src="js/main.js"></script>
 </body>
