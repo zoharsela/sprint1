@@ -19,11 +19,9 @@ div{
 table{
     margin: 15px 15px 5px 600px;
     table-layout: fixed;
- 
-
 } 
 td{
-    
+    font-size: 12px;
     cursor: pointer;
     border-style: inset;
     border-color: black;
@@ -31,8 +29,8 @@ td{
     background-color: rgb(68, 66, 66);
     font-weight: bold;
     font-style: oblique;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     text-align: center;
 }  
 h1{
@@ -155,7 +153,6 @@ p {
 }
 #lifePic{
     cursor: not-allowed; 
-    /* margin-left: 1px; */
     border-style: inset;
     border-color: rgb(77, 78, 78);
     border-radius: 7%;
@@ -188,7 +185,6 @@ p {
 #MinePic{
     cursor: not-allowed; 
     font-size: 17px;
-    /* margin-left: 1px; */
     border-style: inset;
     border-color: rgb(77, 78, 78);
     border-radius: 7%;
@@ -220,7 +216,6 @@ p {
 }
 #cluePic{
     cursor: pointer;
-        /* margin-left: 1px; */
     border-style: inset;
     border-color: rgb(77, 78, 78);
     border-radius: 7%;
@@ -234,16 +229,3 @@ p {
     letter-spacing: 3px;
 
 }
-
-/* label{
-    display: inline;
-} */
-/* p{
-    margin-top: 50px;
-} */
-/* #extra{
-    margin-top: 10px; */
-    /* /* width: 300px;
-    height: 50px;
-
-} */
