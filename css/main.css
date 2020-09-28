@@ -17,7 +17,7 @@ div{
     align-items: center;
   }
 table{
-    margin: 15px 15px 5px 600px;
+    margin: 15px 15px 5px 593px;
     table-layout: fixed;
 } 
 td{
@@ -42,7 +42,7 @@ h1{
     background-color: black;
     color: rgb(214, 73, 73);
     letter-spacing: 3px;
-    margin-left: 560px;
+    margin-left: 540px;
 }
 
 h2{
@@ -51,6 +51,7 @@ h2{
     font-weight: bolder;
     font-family: "Arial";
     letter-spacing: 3px;
+    margin-left: 540px;
 }
 
 
@@ -95,10 +96,10 @@ p {
     width: auto;
 }
 #clock{
-    margin: 15px 5px 15px 70px;
+    margin: 150px 5px 5px 40px;
 }
 #time{
-    margin: 5px 5px 5px 70px; 
+    margin: 30px 5px 5px 70px; 
     cursor: not-allowed; 
     margin-left: 550px;
     border-style: inset;
@@ -130,14 +131,15 @@ p {
 
 }
 #head{
-    margin-left: 665px;
+    margin-left: 650px;
+    margin-bottom: 5px;
 }
 #head2{
-    margin-left: 615px;
+    margin-left: 585px;
 }
 #life{
     cursor: not-allowed; 
-    margin-left: 520px;
+    margin-left: 450px;
     border-style: inset;
     border-color: rgb(77, 78, 78);
     border-radius: 7%;
@@ -192,7 +194,7 @@ p {
     height: 45px;
     padding: 4.5px;
     background-color: rgb(77, 78, 78);
-    color: rgb(214, 73, 73);
+    color: rgb(150, 35, 35);
     font-family: "Arial";
     font-weight: bolder;
     letter-spacing: 3px;
@@ -228,4 +230,41 @@ p {
     font-family: "Arial";
     letter-spacing: 3px;
 
+}
+#safe{
+    
+    cursor: not-allowed; 
+    border-style: inset;
+    border-color: rgb(77, 78, 78);
+    border-radius: 7%;
+    width: 55px;
+    height: 30px;
+    padding: 4px;
+    background-color:black;
+    color:rgb(214, 73, 73);
+    font-weight: bolder;
+    font-family: "Arial";
+    letter-spacing: 3px;
+}
+#safePic{
+    font-size: 17px;
+    cursor: pointer;
+    border-style: inset;
+    border-color: rgb(77, 78, 78);
+    border-radius: 7%;
+    width: 55px;
+    height: 30px;
+    padding: 4px;
+    background-color: rgb(77, 78, 78);
+    color: rgb(150, 35, 35);
+    font-weight: bolder;
+    font-family: "Arial";
+    letter-spacing: 3px;
+}
+
+#safePic:hover{
+    background-color: red;
+}
+#cluePic:hover{
+    background-color: red;
 }
